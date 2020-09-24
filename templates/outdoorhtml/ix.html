@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BBC News</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="jumbotron" style="color:black">
+
+    <h1 style="color:black">
+        This is the latest news
+
+    </h1>
+
+</div>
+
+
+<div class="container">
+    
+
+    {% for auth, url, new, des, img in mylist|slice:"0:6" %}
+  
+    <img src="{{img}}" alt="">
+    <a href="{{url}}">{{url}}</a>
+
+
+    <h1 class="text-success">{{ auth }}</h1> 
+    <h2 class="text-danger">News:</h2> 
+    <h3><p class="text-warning"> {{new}}</p></h3>
+ 
+    {{value | linebreaks}}
+
+    <h4 class="text-danger">Description:</h4>
+     <h5><p class="text-primary">{{des}}</p></h5>
+    {{value | linebreaks}}
+
+
+
+    {% endfor %}
+
+
+
+
+</div>
+
+</body>
+</html>
