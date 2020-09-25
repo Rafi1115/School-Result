@@ -12,9 +12,9 @@ admin.site.register(Grade)
 admin.site.register(Exam)
 admin.site.register(Board)
 
-admin.site.register(Class_Alim)
 
-admin.site.register(Class_Dakhil)
-admin.site.register(Semester)
+
+admin.site.register(Subjects_of_class)
+admin.site.register(Course)
 
 
