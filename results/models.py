@@ -11,8 +11,8 @@ GROUP_CHOICES = (
 
 RESULT_CHOICES = (
 
-    ('F', 'FAILED'),
-    ('P', 'PASSED'),
+    ('FAILED', 'FAILED'),
+    ('FAILED', 'PASSED'),
 
 )
 
@@ -65,12 +65,12 @@ class StudentInfo(models.Model):
 
     exam = models.ForeignKey('Exam', on_delete=models.SET_NULL, blank=True, null=True)
 
-    result = models.CharField(choices=RESULT_CHOICES, max_length=1, blank=True)
+    result = models.CharField(choices=RESULT_CHOICES, max_length=6, blank=True)
     gpa = models.FloatField(null=True, blank=True)
 
     
     def __str__(self):
-        return (str(self.roll))
+        return (str(self.name))
 
 class School(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,

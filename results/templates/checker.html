@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  
+
+
+
+  <form method="get">
+    <div class="well">
+      <h4 style="margin-top: 0">Filter</h4>
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.name.label_tag }}
+          {% render_field filter.form.name class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.board.label_tag }}
+          {% render_field filter.form.board class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.group.label_tag }}
+          {% render_field filter.form.group class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ filter.form.exam.label_tag }}
+          {% render_field filter.form.exam class="form-control" %}
+        </div>
+
+
+        <div class="form-group col-sm-8 col-md-6">
+          {{ filter.form.groups.label_tag }}
+          <div>
+            {% for choice in filter.form.groups %}
+              <label class="checkbox-inline">
+                {{ choice.tag }} {{ choice.choice_label }}
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+    </div>
+  </form>
+
+
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Board</th>
+        <th>Group</th>
+        <th>Exam</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in filter.qs %}
+
+
+
+
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h5>
+      <p>
+        Name:{{ user.name }} <br>
+        Father: {{ user.father_name }} <br>
+        Mother: {{ user.mother_name }} <br>
+        Date of Birth: {{ user.date_of_birth }} <br>
+        Institute: {{ user.institute }} <br>
+  
+       </p>
+      </h5>
+    </div>
+
+    <div class="col-md-4">
+<h5>
+      <p>
+        Roll:{{ user.roll }} <br>
+        Board: {{ user.board }} <br>
+        dept: {{ user.dept }} <br>
+        Result: {{ user.get_result_display }} <br>
+        Gpa: {{ user.gpa }} <br>
+      </p>
+  </h5>
+    </div>
+  <hr>
+
+</div>
+
+
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.mother_name  }}</td>
+          <td>{{ user.get_group_display }}</td>
+          <td>{{ user.exam }}</td>
+          <!-- <td>
+            {% for group in user.groups.all %}
+              {{ group }}
+            {% empty %}
+              <em class="text-muted">No group</em>
+            {% endfor %}
+          </td> -->
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+{% endblock %}
+  
+
+
