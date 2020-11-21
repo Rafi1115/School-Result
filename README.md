@@ -1,4 +1,4 @@
-# result
+# Result Checker
 
 
 This is Student result checker web app, students can check their result through this app... 
